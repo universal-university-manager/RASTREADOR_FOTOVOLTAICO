@@ -1,0 +1,15 @@
+{
+    "status": "Ativo",
+    "historicoDeConsumo": [
+        [ "22.10.2021 = 500" ],
+        [ "23.10.2021 = 600" ]
+    ],
+    "consumoAnterior": {
+        "data": "24.10.2021",
+        "consumo": 490
+    },
+    "consumoAtual": {
+        "data": "25.10.2021",
+        "consumo": 60
+    }
+}

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/owl/owl.carousel.min.css" />
+    <link rel="stylesheet" href="css/owl/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="icon" type="imagem/png" href="assets/logo unip full.png" />
+
+    <title>Rastreador fotovoltaico</title>
+  </head>
+  <body>
+
+    <!-- CABEÇALHO DA PÁGINA -->
+    <div id="header">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light justify-content-between">
+          <a class="navbar-brand" href="index.html">
+            <img src="assets/logo unip full.png" class="img-fluid" width="40%" />
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <h4 class="col-lg-4 col-md-6 align-self-center">Trabalho acadêmico de TCC</h4>
+        </nav>
+      </div>
+    </div>
+
+    <!-- CONTEXTO PRINCIPAL DA PÁGINA -->
+    <div id="slider" class="block">
+      <div class="container pt-5">
+        <div class="row">
+          <div class="col-lg-6 col-md-8 align-self-center" style="margin-right: 8%;">
+            <h1>Rastreador fotovoltaico</h1>
+            <img src="assets/rastreador.jpeg" class="img-fluid"/>
+          </div>
+          <div class="col-lg-5 col-md-6 align-self-center">
+            <h1>Tabela de consumo</h1>
+            <button type="button" class="btn btn-secondary"  data-toggle="button" aria-pressed="false" autocomplete="off" onclick="GetConsumoAnterior()">Consumo anterior</button>
+            <button type="button" class="btn btn-primary"  data-toggle="button" aria-pressed="false" autocomplete="off" onclick="GetConsumoAtual()">Consumo atual</button>
+            <table class="table table-dark">
+              <thead>
+                <tr>
+                  <th scope="col" >Data</th>
+                  <th scope="col" id="consumo_data" value >-</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row" >Consumo (Wm)</th>
+                  <td id="consumo_valor">-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h1 class="title text-center">Simulação do circuito</h1>
+          <div class="subtitle text-center mb-4">
+            <iframe width="80%" height="500" src="https://www.tinkercad.com/embed/6TtFsHAuDIl?editbtn=1" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOTOS DO PROJETO -->
+    <!-- <div id="services" class="block">
+      <div class="container">
+        <h2 class="title text-center"></h2>
+        <div class="row">
+          <div class="col-lg-3 col-md-6 mb-lg-0 mb-4">
+            <a href="servicos.html" class="dataFiles">
+              <div class="img-container mb-3">
+                <img src="assets/services/2.jpg" class="img-fluid" />
+              </div>
+              <h5 class="text-uppercase">Higienização de Tapetes</h5>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-lg-0 mb-4">
+            <a href="servicos.html" class="dataFiles">
+              <div class="img-container mb-3">
+                <img src="assets/services/3.jpg" class="img-fluid" />
+              </div>
+              <h5 class="text-uppercase">Higienização de Autos</h5>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-lg-0 mb-4">
+            <a href="servicos.html" class="dataFiles">
+              <div class="img-container mb-3">
+                <img src="assets/services/poltrona.jpg" class="img-fluid" />
+              </div>
+              <h5 class="text-uppercase">Higienização de Sofas</h5>
+            </a>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-lg-0 mb-4">
+            <a href="servicos.html" class="dataFiles">
+              <div class="img-container mb-3">
+                <img src="assets/services/sofa.jpg" class="img-fluid" />
+              </div>
+              <h5 class="text-uppercase">Higienização de conchões</h5>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    
+    <!-- RODAPÉ DA PÁGINA -->
+    <footer id="baseboard">
+      <div class="container">       
+        <div class="logo py-4">
+          <div class="rodape">
+            <sp>
+              Integrantes:
+              <br>MARCIO EIJI TOYOYOSHI        &emsp; &emsp; &emsp; &emsp; &emsp; R.A: D26DJH2  &emsp;  TURMA: 10/CP0P01
+              <br>JHONATA RAMOS BEZERRA        &emsp; &emsp; &emsp; &emsp; R.A: D333DH3  &emsp;  TURMA: 10/CP0P01
+              <br>RUBEM RUARLLEN SANTOS NUNES  &ensp; &ensp; R.A: N205873  &emsp;  TURMA: CP9P01
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+<script>
+
+    // Consultar o json de dados e pegar o consumo atual
+    function GetConsumoAtual () {
+    const url = 'dados.json'
+  
+    fetch(url)
+      .then(response => response.json())
+      .then(consumoData => {
+        document.getElementById("consumo_data").innerHTML = consumoData["consumoAtual"].data;
+        document.getElementById("consumo_valor").innerHTML = consumoData["consumoAtual"].consumo + "Wm";
+    })
+  }
+
+  // Consultar o json de dados e pegar o consumo anterior
+  function GetConsumoAnterior () {
+    const url = 'dados.json'
+  
+    fetch(url)
+      .then(response => response.json())
+      .then(consumoData => {
+        document.getElementById("consumo_data").innerHTML = consumoData["consumoAnterior"].data;
+        document.getElementById("consumo_valor").innerHTML = consumoData["consumoAnterior"].consumo + "Wm";
+    })
+  }
+
+  GetConsumoAtual()
+
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="http:\\d3js.org\d3.v3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/magnify/jquery.magnific-popup.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
