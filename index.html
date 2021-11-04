@@ -25,8 +25,18 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <h4 class="col-lg-4 col-md-6 align-self-center">Trabalho acadêmico de TCC</h4>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" href="index.html">Página Inicial</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="dados.json">Dados do Arduino</a>
+              </li>
+            </ul>
+          </div>
         </nav>
+        <h4 class="col-lg-4 col-md-6 align-self-center">Trabalho acadêmico de TCC</h4>
       </div>
     </div>
 
@@ -65,47 +75,6 @@
       </div>
     </div>
 
-    <!-- FOTOS DO PROJETO -->
-    <!-- <div id="services" class="block">
-      <div class="container">
-        <h2 class="title text-center"></h2>
-        <div class="row">
-          <div class="col-lg-3 col-md-6 mb-lg-0 mb-4">
-            <a href="servicos.html" class="dataFiles">
-              <div class="img-container mb-3">
-                <img src="assets/services/2.jpg" class="img-fluid" />
-              </div>
-              <h5 class="text-uppercase">Higienização de Tapetes</h5>
-            </a>
-          </div>
-          <div class="col-lg-3 col-md-6 mb-lg-0 mb-4">
-            <a href="servicos.html" class="dataFiles">
-              <div class="img-container mb-3">
-                <img src="assets/services/3.jpg" class="img-fluid" />
-              </div>
-              <h5 class="text-uppercase">Higienização de Autos</h5>
-            </a>
-          </div>
-          <div class="col-lg-3 col-md-6 mb-lg-0 mb-4">
-            <a href="servicos.html" class="dataFiles">
-              <div class="img-container mb-3">
-                <img src="assets/services/poltrona.jpg" class="img-fluid" />
-              </div>
-              <h5 class="text-uppercase">Higienização de Sofas</h5>
-            </a>
-          </div>
-          <div class="col-lg-3 col-md-6 mb-lg-0 mb-4">
-            <a href="servicos.html" class="dataFiles">
-              <div class="img-container mb-3">
-                <img src="assets/services/sofa.jpg" class="img-fluid" />
-              </div>
-              <h5 class="text-uppercase">Higienização de conchões</h5>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div> -->
-    
     <!-- RODAPÉ DA PÁGINA -->
     <footer id="baseboard">
       <div class="container">       
@@ -132,7 +101,9 @@
       .then(consumoData => {
         document.getElementById("consumo_data").innerHTML = consumoData["consumoAtual"].data;
         document.getElementById("consumo_valor").innerHTML = consumoData["consumoAtual"].consumo + "Wm";
-    })
+        // Visualizar dados no console
+        console.log(consumoData)
+      })
   }
 
   // Consultar o json de dados e pegar o consumo anterior
@@ -144,7 +115,9 @@
       .then(consumoData => {
         document.getElementById("consumo_data").innerHTML = consumoData["consumoAnterior"].data;
         document.getElementById("consumo_valor").innerHTML = consumoData["consumoAnterior"].consumo + "Wm";
-    })
+        // Visualizar dados no console
+        console.log(consumoData)
+      })
   }
 
   GetConsumoAtual()
